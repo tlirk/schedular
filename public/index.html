@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tlirk Schedular</title>
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+<body>
+    <!--home, taskSchedule and notes section-->
+    <div class="container">
+        <!-- home section-->
+        <div class="nav_bar">
+            <section>
+                <div class="aside_left">
+                    <div id="taskBtn" onclick="handleUi()">
+                        <h2>
+                            <img src="../img/icons/schedule_24.png">
+                        </h2>
+                        
+                        <span>Tasks</span>
+                    </div>
+
+                    <div id="noteBtn" onclick="handleUi()">
+                        <h2>
+                            <img src="../img/icons/note_alt_24.png">
+                        </h2>
+                        <span>Notes</span>
+                    </div>
+
+                    <div id="homeBtn" onclick="handleUi()">
+                        <h2>
+                            <img src="../img/icons/home_24.png">
+                        </h2>
+                        <span>Home</span>
+                    </div>
+                </div>
+
+                <!--main section to display daily  overview-->
+                <div class="aside_right">
+                    
+                    <div class="intro">
+                        <h2>
+                            GoodMorning <span>sir</span>, welcome back here's your
+                            day overview
+                        </h2>
+                    </div>
+                    <div class="overview">
+                        <div class="task">
+                            <h2>Task</h2>
+                            <div class="task_content">
+                                <div id="pendingBtn">
+                                    <span id="tasks_total">0</span>
+                                    <p>Pending</p>
+                                </div>
+        
+                                <div id="achievedBtn" style="color: green;">
+                                    <span id="tasks_completed">0</span>
+                                    <p>Completed</p>
+                                </div>
+        
+                                <div id="cancelledBtn" style="color: red;">
+                                    <span id="tasks_cancelled" >0</span>
+                                    <p>Cancelled</p>
+                                </div>
+                            </div>
+
+                            <div class="view_task view" >
+                                <button>View All</button>
+                                <button id="addTaskBtn">Add Task</button>
+                            </div>
+                        </div>
+        
+                        <div class="daily">
+                            <h2>Daily Routine</h2>
+                            <div class="daily_content">
+                                <div>
+                                    <span>8</span>
+                                    <p>Total</p>
+                                </div>
+        
+                                <div>
+                                    <span>0</span>
+                                    <p>Completed</p>
+                                </div>
+        
+                                <div>
+                                    <span>0</span>
+                                    <p>Cancelled</p>
+                                </div>   
+                            </div>
+
+                            <div class="view_task view" >
+                                <button>View All</button>
+                                <button>Add Routine</button>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <!--calendar node-->
+                <div class="today_calendar">
+                    <!--date node-->
+                    <div class="today_calender_first">
+                        <div>
+                            <h2 id="date">8</h2>
+                            <span id="day">Wednesday</span>
+                        </div>
+    
+                        <div>
+                            <h2 id="month">May</h2>
+                            <p id="year">2025</p>
+                        </div>
+                    </div>
+
+                    <!--time node-->
+                    <div class="today_calendar_second">
+                        <span>Time</span>
+                        <h2 id="GTIME">04:37:00</h2>
+                    </div>
+                </div>
+
+                <!--click all content display for task, daily daily routines-->
+                <div class="overview_content">
+                    <h2>Task For Today</h2>
+                    <div class="view_content">
+                        <div class="view_item" data-id="3000">
+                            <p>Reading Daily buggle</p>
+                            <div class="view_item_detail">
+                                <span>Starts@: 12:00</span>
+                                <span>Duration: 1hr 20mins 40secs</span>
+                            </div>
+                            <button>Cancel</button>
+                        </div>
+
+                        <div class="view_item">
+                            <p>Reading Daily buggle</p>
+                            <div class="view_item_detail">
+                                <span>Starts@: 12:00</span>
+                                <span>Duration: 1hr 20mins 40secs</span>
+                            </div>
+                            <button></button>
+                        </div>
+
+                        <div class="view_item">
+                            <p>Reading Daily buggle</p>
+                            <div class="view_item_detail">
+                                <span>Starts@: 12:00</span>
+                                <span>Duration: 1hr 20mins 40secs</span>
+                            </div>
+                            <button></button>
+                        </div>
+
+                        <div class="view_item">
+                            <p>Reading Daily buggle</p>
+                            <div class="view_item_detail">
+                                <span>Starts@: 12:00</span>
+                                <span>Duration: 1hr 20mins 40secs</span>
+                            </div>
+                            <button></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+
+        <!--task schedule-->
+        <div class="taskSec" >
+            <!--application navigation pane-->
+            <div class="homeNavTask aside_left">
+                <div id="taskBtn" onclick="handleUi()">
+                    <h2>
+                        <img src="../img/icons/schedule_24.png">
+                    </h2>
+                    
+                    <span>Tasks</span>
+                </div>
+
+                <div id="noteBtn" onclick="handleUi()">
+                    <h2>
+                        <img src="../img/icons/note_alt_24.png">
+                    </h2>
+                    <span>Notes</span>
+                </div>
+
+                <div id="homeBtn" onclick="handleUi()">
+                    <h2>
+                        <img src="../img/icons/home_24.png">
+                    </h2>
+                    <span>Home</span>
+                </div>
+    
+            </div>
+
+            <aside>
+                    <!--Task Schedule title-->
+                    <div class="taskSecTitle">
+                        <h2>Task Schedule's</h2>
+                    </div>
+                    <!--active item navigation section-->
+                    <div class="taskSec_nav">
+                        <div>Today</div>
+                        <div>All</div>
+                        <div id="addTaskBtn">Add</div>
+                    </div>
+
+                    <!--message item-->
+                    <div class="taskSec_message">
+                        <div>
+                            No Task Schedule At The Moment
+                        </div>
+                    </div>
+
+                    <!--Active task item-->
+                    <div class="taskSec_active">
+                        <div class="taskSec_active_item">
+                            <p>Description</p>
+                            <div class="taskSec_active_item_detail">
+                                <h2>title</h2>
+                                <span>Duration: 1hr 30mins 00sec</span>
+                                <span>Started@: 10:30</span>
+                                <span>Date: Thur, 8 May 2025</span>
+                            </div>
+                        </div>
+                        <div class="taskSec_active_timer">
+                            <div>
+                                <!--duration timer to end-->
+                                <p>Ends In:</p>
+                                <span>Hr:00</span>
+                                <span>Min:00</span>
+                                <span>Sec:00</span>
+                            </div>
+                            <div>
+                                <!--Add notes-->
+                                <button>Note</button>
+                                <!--cancel task item-->
+                                <button>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--other schedule for today-->
+                    <div class="other_task">
+                       
+                        <h2 class="other_task_title">Other Tasks, Today</h2>                
+                        
+                        <!--add other schedule for today-->
+                        <button id="add_task addTaskBtn">Add</button>
+                        
+                        <!--other task sschedule for today-->
+                        <div class="other_task_content">
+                            <!--
+                            <div id="task_content_item">
+                                <h2>Name</h2>
+                                <p></p>
+                                <span>Duration: 1hr 30min 10 sec</span>
+                                <span>starts@ 10:30</span>
+                            </div>-->
+
+                            
+                        </div>
+                    </div>
+            </aside>
+        </div>
+
+        <!--notes-->
+        <div class="noteSec" style="display:none;">
+            notes section 
+        </div>
+
+        <!--pop up content message-->
+        <div class="popup">
+            <div class="popup-content add_task_template">
+                <span class="close-btn">&times;</span>
+
+                <form class="task_template_main">
+                    
+                    <label for="">Title</label>
+                    <input type="text" id="task_title" placeholder="title" required>
+
+                    <label for="">Date</label>
+                    <input type="date" id="date_time" required>
+
+                    <label>Duration</label>
+                    <div class="duration">
+                        <div>
+                            <span>Hr</span>
+                            <input id="duration_hr" type="number" placeholder="" required maxlength="24">
+                        </div>
+
+                        <div>
+                            <span>Min</span>
+                            <input id="duration_min" type="number" placeholder="" maxlength="60" required>
+                        </div>
+
+                        <div>
+                            <span>Sec</span>
+                            <input id="duration_sec" type="number" placeholder="" required maxlength="60">
+                        </div>
+                    </div>
+
+                    
+
+                    <label for="description">Description</label>
+                    <textarea autocomplete="on" autofocus  name="description" id="description" cols="30" rows="10" required></textarea>
+
+                    <label for="">Start Time (24hr System)</label>
+                    <div class="start_time">
+                        <div>
+                            <span>Hr</span>
+                            <input id="start_time_hr" type="number" required maxlength="24">
+                        </div>
+
+                        <div>
+                            <span>Min</span>
+                            <input id="start_time_min" type="number" required maxlength="60">
+                        </div>
+
+                        <div>
+                            <span>Sec</span>
+                            <input id="start_time_sec" type="number" required maxlength="60">
+                        </div>
+                    </div>
+
+                    <div class="task_template_buttons">
+                        <button type="submit" id="submit_task">Save</button>
+                        <button type="reset" id="cancel_submit_task">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!--message notification popUp-->
+        <div class="msgPopUp">
+            <div class="msgPopUp-content">
+                <span class="msg_close-btn">&times;</span>
+                <div class="msg">
+                    <div class="msg_status">
+                        <!--success, alert, reminder-->
+                        Success!
+                    </div>
+                    <div class="msg_notify">
+                        message sent successfully
+                    </div>
+                </div>
+                <div class="msg_timer"></div>
+            </div>
+        </div>
+       
+
+    </div>
+ <script src="scripts/display.js" defer></script>
+ <script src="scripts/date.js" defer></script>  
+ <script type="module" src="scripts/loadData.js" defer></script> 
+</body>
+</html>

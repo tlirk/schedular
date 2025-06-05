@@ -1,0 +1,1011 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg_dull: #ffffffec;
+    --bg_bright: #fff;
+    --text_dark: rgba(0, 0, 0, 0.952);
+    --text-highlight: aqua;
+    --orange: orange;
+    --uniform-padding: 20px 20px 20px 20px;
+    --grey: #274262;
+}
+
+body{
+    background: var(--bg_dull);
+     background: #402662;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 120vh;
+    width: 100vw;
+    background: #402662;
+}
+
+
+/* menu navigation */
+.nav_bar{
+    position: absolute;
+    display: flex;/*flex*/
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    height: 100%;
+    width: 100%;
+    background: #402662;
+    padding: 20px;  
+}
+
+.nav_bar section:nth-child(1){
+    display: flex;
+    flex-direction: row;
+}
+
+
+.aside_left{
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.aside_left div{
+    display: flex;
+    height: 70px;
+    width: 70px;
+    background: var(--text_dark);
+    justify-content: center;
+    align-items: center;
+    color: var(--text-highlight);
+    font-size: 1.5rem;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border: 2px solid var(--text-highlight);
+}
+
+
+.aside_left div:hover{
+    transform: scale(90%);
+}
+
+.aside_left div span{
+    position: relative;
+    top: -70px;
+    right: -70px;
+    display: none;/*flex*/
+    color: var(--orange);
+    background: var(--bg_bright);
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.aside_left div:hover h2{
+    display: none;
+}
+
+.aside_left div:hover > span{
+    display: flex;
+}
+
+.aside_right {
+    display: flex;
+    flex-direction: column;
+    padding: var(--uniform-padding);
+}
+
+.intro{
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--bg_bright);
+    min-height: 200px;
+    color: var(--text-highlight);
+    justify-content: center;
+    border-radius: 10px;
+    background-image: url('/img/neura-net.jpg');
+    padding: 10px 10px;
+}
+
+.overview{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.task{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.task h2{
+    color: var(--text-highlight);
+    font-size: 2.5rem;
+}
+
+.task_content{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+}
+
+.task_content div{
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+    min-width: 170px;
+    margin: 10px 10px;
+    background: var(--bg_dull);
+    font-size: 1.8rem;
+    border-radius: 5px;
+    padding: 5px 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.task_content div span{
+    font-size: 3rem;
+    color: var(--orange);
+}
+
+.daily{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.daily h2{
+    color: var(--text-highlight);
+    font-size: 2.5rem;
+}
+
+.daily_content{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+}
+
+.daily_content div{
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+    min-width: 170px;
+    margin: 10px 10px;
+    background: var(--bg_dull);
+    font-size: 1.8rem;
+    border-radius: 5px;
+    padding: 5px 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.daily_content div span{
+    font-size: 3rem;
+    color: var(--orange);
+}
+
+.task_content div p{
+    color: var(--text_dark);
+}
+
+.view{
+    display: flex;
+    flex-direction: row;
+}
+
+.view button{
+    border-radius: 5px;
+    border: 2px solid var(--orange);
+    background: var(--grey);
+    height: 40px;
+    min-width: 100px;
+    color: var(--orange);
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    font-size: 1.4rem;
+    padding: 5px 5px;
+    margin: 0px 10px 0px 10px;
+}
+
+.view button:hover{
+    transform: scale(98%);
+    border: 2px solid var(--text-highlight);
+    color: var(--text-highlight);
+}
+
+
+/*navigation bar section two style*/
+
+.nav_bar section:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    padding: var(--uniform-padding);
+}
+
+.today_calendar{
+    display: flex;
+    flex-wrap: row;
+    justify-content: space-between;
+}
+
+.today_calender_first{
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--grey);
+    width: 300px;
+    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--uniform-padding);
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.today_calender_first div:nth-child(1) h2{
+    color: var(--text-highlight);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.today_calender_first div:nth-child(1) span{
+    color: var(--orange);
+}
+
+.today_calender_first div:nth-child(2) h2{
+    color: var(--bg_bright);
+}
+
+.today_calender_first div:nth-child(2) span{
+    color: var(--orange);
+}
+
+.today_calendar_second{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px 10px;
+    font-size: 2rem;
+    width: 400px;
+    height: 150px;
+    background: #fff;
+    border-radius: 10px;
+}
+.today_calendar_second{
+    color: var(--orange);
+}
+
+/*overview content node style sheet*/
+
+.overview_content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.overview_content h2{
+    color: var(--text-highlight);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.view_content{
+    padding: var(--uniform-padding);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.view_item{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background: var(--grey);
+    padding: 5px 5px;
+    border-radius: 10px;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 2px solid var(--grey);
+    cursor: pointer;
+}
+
+.view_item:hover{
+    transform: scale(90%);
+    background: var(--bg_dull);
+    border: 2px solid var(--orange);
+}
+
+.view_item:hover > .view_item_detail{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.view_item p{
+    color: var(--text-highlight);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    line-height: 60px;
+}
+
+.view_item_detail{
+    position: absolute;
+    top: 35px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-200px);
+    transition: opacity 1.3s ease transform 1.3s ease, visibility 1.3s;
+    display: flex;/*flex*/
+    flex-direction: column;
+    color: var(--grey);
+    font-size: 1.5rem;
+}
+
+.view_item button{
+    color: var(--text_dark);
+    background: var(--bg_bright);
+    outline: none;
+    height: 30px;
+    font-size: 1.4rem;
+    width: 70%;
+    border-radius: 5px;
+    background: var(--orange);
+}
+
+
+@media screen and (max-width:1500px){
+    .nav_bar{
+        position: absolute;
+        display: flex;/*flex*/
+        flex-direction: row;
+        /*flex-wrap: wrap;*/
+        height: 100%;
+        width: 100%;
+        background: #402662;
+        padding: 50px;
+        
+    }
+
+    .today_calendar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .today_calender_first{
+        display: flex;
+        flex: 1 1 0;
+        background: var(--grey);
+        width: 500px;
+        height: 150px;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--uniform-padding);
+        border-radius: 10px;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .today_calendar_second{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px 10px;
+        font-size: 2rem;
+        width: 500px;
+        height: 150px;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .view_content{
+        padding: 5px 5px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .view_item{
+        position: relative;
+        width: 500px;
+        height: 200px;
+        background: var(--grey);
+        padding: 5px 5px;
+        border-radius: 10px;
+        margin: 10px 0px 10px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 2px solid var(--grey);
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 1304px){
+    .nav_bar{
+        position: absolute;
+        display: flex;/*flex*/
+        flex-direction: column;
+        /*flex-wrap: wrap;*/
+        height: 100%;
+        min-width: 100%;
+        background: #402662;
+        padding: 50px;
+        
+    }
+
+    .today_calendar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .today_calender_first{
+        display: flex;
+        flex: 1 1 0;
+        background: var(--grey);
+        width: 500px;
+        height: 150px;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--uniform-padding);
+        border-radius: 10px;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .today_calendar_second{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px 10px;
+        font-size: 2rem;
+        width: 500px;
+        height: 150px;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .view_content{
+        padding: 5px 5px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .view_item{
+        position: relative;
+        width: 500px;
+        height: 200px;
+        background: var(--grey);
+        padding: 5px 5px;
+        border-radius: 10px;
+        margin: 10px 10px 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 2px solid var(--grey);
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (max-width: 913px){
+    .nav_bar{
+        position: absolute;
+        display: flex;/*flex*/
+        flex-direction: column;
+        /*flex-wrap: wrap;*/
+        height: 100%;
+        min-width: 100%;
+        background: #402662;
+        padding: 50px;
+        
+    }
+
+    .today_calendar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .today_calender_first{
+        display: flex;
+        flex: 1 1 0;
+        background: var(--grey);
+        width: 500px;
+        height: 250px;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--uniform-padding);
+        border-radius: 10px;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .today_calendar_second{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px 10px;
+        font-size: 2rem;
+        width: 500px;
+        height: 150px;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .view_content{
+        padding: 5px 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .view_item{
+        position: relative;
+        width: 500px;
+        min-height: 200px;
+        flex: 1 1 0;
+        background: var(--grey);
+        padding: 5px 5px;
+        border-radius: 10px;
+        margin: 10px 10px 10px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 2px solid var(--grey);
+        cursor: pointer;
+    }
+
+}
+
+
+/*task section style sheet*/
+.taskSec{
+    position: relative;
+    background: #274262;
+    display: none;/*flex*/
+    flex-direction: column;
+    width: 100%;
+    min-height: 120vh;
+    color: var(--text_dark);
+    font-size: 1.3rem;
+    overflow-x: hidden;
+}
+
+.homeNavTask{
+    position: fixed;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.taskSec aside{
+    padding-left: 70px;
+}
+
+.taskSecTitle h2{
+    color: var(--text-highlight);
+    font-size: 3rem;
+}
+
+.taskSec_nav{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 10px 0px;
+    
+}
+
+.taskSec_nav div{
+    height: 50px;
+    width: 100px;
+    margin: 5px 5px;
+    border-radius: 10px;
+    background: var(--bg_dull);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aqua;
+}
+
+.taskSec_nav div:hover{
+    transform: scale(98%);
+    border: 2px solid var(--orange);
+    color: var(--orange);
+}
+
+.taskSec_message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+    height: 200px;
+    min-width: 500px;
+    background: var(--bg_dull);
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+}
+/*pop-cancel*/
+.cancel-popupCancel {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-contentCancel {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-actions button {
+  padding: 10px 20px;
+}
+
+.popup-timer-bar {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  background-color: green;
+  width: 100%;
+  transition: width 30s linear;
+}
+.close-bar{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  background-color: blue;
+  width: 100%;
+  transition: width 0.5s linear;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+/*active item display section*/
+
+.taskSec_active{
+    display: none;/*flex*/
+    margin: 20px 0px 20px 0px;
+}
+
+.taskSec_active_item{
+    display: flex;
+    flex-direction: column;
+    background: var(--bg_dull);
+    flex: 1 1 0;
+    padding: 5px 5px;
+    border-radius: 10px;
+    min-height: 250px;
+    width: 450px;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.taskSec_active_item_detail{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    justify-content: flex-end;
+}
+
+.taskSec_active_timer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.taskSec_active_timer button{
+    margin: 10px 0px 0px 0px;
+    height: 40px;
+    outline: none;
+    border: 2px solid var(--text-highlight);
+    border-radius: 10px;
+    color: var(--text_dark);
+}
+
+.taskSec_active_timer div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    background: var(--bg_dull);
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.taskSec_active_timer div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*other task style sheet*/
+.other_task{
+    display: none;/*flex*/
+    flex-direction: column;
+    
+}
+
+.other_task_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-highlight);
+    margin: 10px 0px 5px 0px;
+}
+
+#add_task{
+    width: 100px;
+    height: 40px;
+    border: 2px solid var(--text-highlight);
+    border-radius: 10px;
+    color: var(--text_dark);
+}
+
+/*display only when content is available for the day*/
+.other_task_content{
+    display: flex;/*flex*/
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    overflow: auto;         /* Enables horizontal scroll */
+    /*overflow-y: hidden;        Prevents vertical overflow */
+    /*white-space: nowrap;      /* Keeps cards in one horizontal line */
+    max-width: 100%;          /* Restricts width to parent */
+    scroll-behavior: smooth;  /* Optional: smooth scroll effect */
+    padding: 10px;
+    gap: 10px;                /* Optional: space between cards */
+}
+
+.task-card{
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    min-width: 280px;
+    border: 1px solid #e0e0e0;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 0.6s ease-out forwards; 
+}
+
+.task-card h2{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+.task-info{
+    margin-bottom: 8px;
+}
+
+.label{
+    font-weight: bold;
+    color: #636e72;
+    margin-right: 5px;
+}
+
+.value{
+    color: #2d3436;
+}
+
+.task-control button{
+    margin: 10px 0px 0px 0px;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border: 2px solid var(--text-highlight);
+    border-radius: 10px;
+    color: var(--text_dark);
+}
+
+@keyframes fadeSlideIn {
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+}
+
+/*pop Up content*/
+.popup{
+    display: none;/*none*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.popup-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 400px;
+    text-align: center;
+    margin: 20px;
+}
+
+.close-btn{
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--orange);
+}
+
+
+/*application message pop bar*/
+.msgPopUp{
+    display: none;/*none*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.msgPopUp-content{
+    background-color: white;
+    border-radius: 8px;
+    min-width: 400px;
+    text-align: center;
+}
+
+.msg{
+    padding: 20px;
+}
+
+.msg_status{
+    color: green;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.msg_notify{
+    font-size: 1.3rem;
+}
+
+.msg_timer{
+    width: 100%;
+    height: 12px;
+    background-color: green;
+}
+
+.msg_close-btn{
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--orange);
+}
+/*addTaskItem*/
+
+.task_template_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.task_template_main label{
+    color: var(--orange);
+    font-size: 1.5rem;
+    margin-top: 10px;
+    position: relative;
+    left: 0%;
+    background-color: #274262;
+    display: flex;
+}
+
+.task_template_main input{
+    height: 40px;
+    border: 2px solid var(--grey);
+    padding: 5px 5px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+}
+
+
+.task_template_main input:hover{
+    border: 2px solid var(--text-highlight);
+    color: var(--text-highlight);
+}
+
+
+.task_template_main textarea{
+    border: 2px solid var(--grey);
+    border-radius: 10px;
+    padding: var(--uniform-padding);
+    font-size: 1.5rem;
+}
+
+.task_template_main textarea:hover{
+    border: 2px solid var(--text-highlight);
+    color: var(--grey);
+}
+
+.duration{
+    display: flex;
+    flex-direction: row;
+}
+
+.duration div input{
+    width: 70px;
+}
+
+.start_time{
+    display: flex;
+    flex-direction: row;
+}
+
+.start_time div input{
+    width: 70px;
+}
+
+.task_template_buttons{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.task_template_buttons button{
+    width: 100px;
+    height: 40px;
+    margin: 5px 5px;
+    border: 3px solid var(--orange);
+    color: var(--grey);
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
+
+.task_template_buttons button:hover{
+    border: 2px solid var(--text-highlight);
+    color: var(--text-highlight);
+}
+

@@ -1,0 +1,178 @@
+[
+    {
+        "date":"2025-05-04",
+        "day":"Sunday",
+        "values":[
+            {
+                "id":122,
+                "schedule_name":"The Theory Of Everything",
+                "schedule_quote":"Reading a book by Hawkins",
+                "start_time": {
+                    "hour":"16",
+                    "min":"27",
+                    "sec":"00"
+                },
+                "duration":{
+                    "hour": 0,
+                    "min": 2,
+                    "sec": 30
+                },
+                "schedule_date":"2025-05-04",
+                "schedule_day":"Sunday",
+                "date_created":""
+            },
+            {
+                "id":123,
+                "schedule_name":"study",
+                "schedule_quote":"a healthy brain builds a good path for opportunities",
+                "start_time": {
+                    "hour":"16",
+                    "min":"35",
+                    "sec":"00"
+                },
+                "duration":{
+                    "hour": 0,
+                    "min": 2,
+                    "sec": 0
+                },
+                "schedule_date":"2025-05-04",
+                "schedule_day":"Sunday",
+                "date_created":""
+            }
+        ]
+    },
+    {
+        "date":"2025-05-05",
+        "day":"Wednesday",
+        "values":[
+            
+        ]
+    },
+    {
+        "date":"2025-05-06",
+        "day":"Wednesday",
+        "values":[
+            {
+                "id":122,
+                "schedule_name":"fitness",
+                "schedule_quote":"keep fit, keeping healthy",
+                "start_time": {
+                    "hour":9,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            },
+            {
+                "id":123,
+                "schedule_name":"study",
+                "schedule_quote":"a healthy brain builds a good path for opportunities",
+                "start_time": {
+                    "hour":8,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            }
+        ]
+    },
+    {
+        "date":"2025-05-07",
+        "day":"Wednesday",
+        "values":[
+            {
+                "id":122,
+                "schedule_name":"fitness",
+                "schedule_quote":"keep fit, keeping healthy",
+                "start_time": {
+                    "hour":9,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            },
+            {
+                "id":123,
+                "schedule_name":"study",
+                "schedule_quote":"a healthy brain builds a good path for opportunities",
+                "start_time": {
+                    "hour":8,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            }
+        ]
+    }
+    ,
+    {
+        "date":"2025-05-08",
+        "day":"Wednesday",
+        "values":[
+            {
+                "id":122,
+                "schedule_name":"fitness",
+                "schedule_quote":"keep fit, keeping healthy",
+                "start_time": {
+                    "hour":9,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            },
+            {
+                "id":123,
+                "schedule_name":"study",
+                "schedule_quote":"a healthy brain builds a good path for opportunities",
+                "start_time": {
+                    "hour":8,
+                    "min":30,
+                    "sec":0
+                },
+                "duration":{
+                    "hour": 1,
+                    "min": 20,
+                    "sec": 0
+                },
+                "schedule_date":"2025-04-30",
+                "schedule_day":"Wednesday",
+                "date_created":""
+            }
+        ]
+    }
+]
