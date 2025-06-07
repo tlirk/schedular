@@ -212,7 +212,7 @@ submitTaskBtn.addEventListener('click', (e)=>{
     //submit_post(taskValue, 'add_task', "POST");
     async function makePostRequest() {
     try {
-        const data = await httpRequest('http://localhost:3000/add_task', 'POST', 
+        const data = await httpRequest('https://tlirk-schedular.onrender.com/add_task', 'POST', 
             taskValue
         );
         console.log(JSON.stringify(data, null, 2));
@@ -224,7 +224,7 @@ submitTaskBtn.addEventListener('click', (e)=>{
     makePostRequest();
     setTimeout(function() {
         console.log("hello");
-        httpRequest('http://localhost:3000/get_allTasks', 'GET')
+        httpRequest('https://tlirk-schedular.onrender.com/get_allTasks', 'GET')
         .then(data => console.log(data))
         .catch(err => console.error(err));
 
@@ -239,7 +239,7 @@ submitTaskBtn.addEventListener('click', (e)=>{
 
 
 async function submit_post(taskvalue, route, method){
-    let url = `http://localhost:3000/${route}`;
+    let url = `https://tlirk-schedular.onrender.com/${route}`;
     try {
         fetch(url,{
             method: `${method}`,
@@ -306,7 +306,7 @@ window.onload = handleUi();
 export async function handleUi() {
     alert("button working");
     try {
-        const data = await httpRequest('http://localhost:3000/get_allTasks', 'GET');
+        const data = await httpRequest('https://tlirk-schedular.onrender.com/get_allTasks', 'GET');
         
         console.log(data.taskItems);
         ParseUiData(data.taskItems);
@@ -480,7 +480,7 @@ async function ParseUiData(data){
             //YES: Make PUT request and remove task
             modal.querySelector('.modal-yes').onclick = function(){
                 clearTimeout(timeoutId);
-                fetch(`http://localhost:3000/update_cancelled?id=${taskId}`,{
+                fetch(`https://tlirk-schedular.onrender.com/update_cancelled?id=${taskId}`,{
                     'method': 'PUT',
                     'content-type':'application/json'
                 })
