@@ -218,7 +218,7 @@ submitTaskBtn.addEventListener('click', (e)=>{
     async function makePostRequest() {
         try {
             if( task_title && task_date && taskDhr && taskDmin && taskDsec && taskDes && taskShr && taskSmin && taskSsec !== ''){
-                const data = await httpRequest('http://localhost:3000/add_task', 'POST', 
+                const data = await httpRequest('https://tlirk-schedular.onrender.com/add_task', 'POST', 
                     taskValue
                 );
                 console.log(JSON.stringify(data, null, 2));
@@ -233,7 +233,7 @@ submitTaskBtn.addEventListener('click', (e)=>{
     makePostRequest();
     setTimeout(function() {
         //console.log("hello");
-        httpRequest('http://localhost:3000/get_allTasks', 'GET')
+        httpRequest('https://tlirk-schedular.onrender.com/get_allTasks', 'GET')
         .then(data => console.log(data))
         .catch(err => console.error(err));
 
@@ -410,7 +410,7 @@ function updateTimerUI(remainingMilliseconds) {
 function confirmTask(){
     if(currentTask && currentTask.status === 'pending'){
         currentTask.status ='confirmed';
-        httpRequest(`http://localhost:3000/update_confirmed?id=${currentTask.id}`, 'PUT');
+        httpRequest(`https://tlirk-schedular.onrender.com/update_confirmed?id=${currentTask.id}`, 'PUT');
         handleUi();
 
         let timeStampInMiliseconds = `${currentTask.schedule_date}T${currentTask.start_time}`;
@@ -456,7 +456,7 @@ function confirmTask(){
                     //currentTask.status = 'completed';
                     currentTask.status = 'completed';
 
-                    httpRequest(`http://localhost:3000/update_completed?id=${currentTask.id}`, 'PUT');
+                    httpRequest(`https://tlirk-schedular.onrender.com/update_completed?id=${currentTask.id}`, 'PUT');
                     handleUi();
                     document.querySelector('.taskSec_active').style.display = 'none';
                     setTimeout(()=>{
@@ -487,7 +487,7 @@ document.getElementById('confirmTaskBtn').addEventListener('click', ()=>{
 function cancelTask(task){
     if(task.status === 'pending'){
         //task.status = 'cancelled';
-        httpRequest(`http://localhost:3000/update_cancelled?id=${task.id}`, 'PUT');
+        httpRequest(`https://tlirk-schedular.onrender.com/update_cancelled?id=${task.id}`, 'PUT');
         //handleUi();
         console.log(`Task ${task.schedule_name} was cancelled.`);
         hidePopup();
