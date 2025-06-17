@@ -274,9 +274,11 @@
 
         <!--pop up content message-->
         <div class="popup">
+
             <div class="popup-content add_task_template">
                 <span class="close-btn">&times;</span>
 
+                <!--add task template popup-->
                 <form class="task_template_main">
                     
                     <label for="">Title</label>
@@ -332,7 +334,6 @@
                     </div>
 
                 </form>
-
             </div>
         </div>
 
@@ -350,6 +351,19 @@
                     </div>
                 </div>
                 <div class="msg_timer"></div>
+            </div>
+        </div>
+
+        <!--Popup confirm active task section-->
+        <div id="popup_active_task_confirm">
+            <div id="confirm_message_box">
+                <h2>Confirm Active Tasks</h2>
+                <h3>Task Name: </h3><br>
+                <p id="taskInfo"></p>
+
+                <span>
+                    <button id='confirmTaskBtn'>Confirm</button>
+                </span>
             </div>
         </div>
        

@@ -301,7 +301,7 @@ body{
 
 .view_item{
     position: relative;
-    width: 400px;
+    min-width: 400px;
     height: 200px;
     background: var(--grey);
     padding: 5px 5px;
@@ -312,6 +312,19 @@ body{
     justify-content: flex-end;
     border: 2px solid var(--grey);
     cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: fadeSlideIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
 }
 
 .view_item:hover{
@@ -352,7 +365,8 @@ body{
     outline: none;
     height: 30px;
     font-size: 1.4rem;
-    width: 70%;
+    width: 200px;
+    max-width: 70%;
     border-radius: 5px;
     background: var(--orange);
 }
@@ -1007,5 +1021,57 @@ body{
 .task_template_buttons button:hover{
     border: 2px solid var(--text-highlight);
     color: var(--text-highlight);
+}
+
+
+/*++++++++confirm active task style section++++++++*/
+#popup_active_task_confirm{
+    display: none;/*flex*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#confirm_message_box{
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 400px;
+    margin: 20px;
+}
+
+#confirm_message_box h2{
+    color: var(--text-highlight);
+    text-align: center;  
+}
+
+#confirm_message_box span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirm_message_box span button{
+    outline: none;
+    background: var(--bg_dull);
+    border: 2px solid var(--text-highlight);
+    color: var(--text-highlight);
+    min-width: 200px;
+    border-radius: 10px;
+    background: var(--grey);
+    height: 40px;
+}
+
+#confirm_message_box span button:hover{
+    background: var(--text-highlight);
+    border: 2px solid var(--grey);
+    color: var(--grey);
 }
 

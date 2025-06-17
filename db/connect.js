@@ -35,11 +35,32 @@ taskDuration TEXT NOT NULL,
 taskStatus TEXT,
 dateCreated  TEXT NOT NULL,
 modifiedDate TEXT
-)`;
+);`;
 
+let sql_user_table = `
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id TEXT NOT NULL UNIQUE,
+  role TEXT NOT NULL DEFAULT "user",
+  firstName TEXT NOT NULL,
+  lastName TEXT NOT NULL,
+  userName TEXT,
+  email TEXT NOT NULL UNIQUE,
+  phoneNo TEXT NOT NULL,
+  password TEXT NOT NULL,
+  dateCreated TEXT NOT NULL DEFAULT (datetime('now')),
+  modifiedDate TEXT NOT NULL DEFAULT (datetime('now'))
+);`;
 
+DB.run(sql_user_table, [], (error)=>{
+    //callback function
+    if(error) {
+        console.log("Error creating  Users table", error);
+        return;
+    }
 
-
+    console.log('Users Table Created');
+})
 
 DB.run(sql, [], (error)=>{
     //callback function

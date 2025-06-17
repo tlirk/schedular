@@ -144,6 +144,11 @@ function formatto2Digit(value) {
       }).format(value);
 }
 
+function timeStringMiliseconds(timeStr){
+    const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+    return ((hours * 60 * 60) + (minutes * 60) + seconds) * 1000;
+}
+
 /*initializing add task variables 
 let task_title = document.querySelector('#task_title').value;
 let task_date = document.querySelector('#date_time').value;
@@ -175,21 +180,21 @@ submitTaskBtn.addEventListener('click', (e)=>{
     
     function validateInputCheck() {
         const ValidateCheck = [
-            { value: task_title, name: "task_title" },
-            { value: task_date, name: "task_date" },
-            { value: taskDhr, name: "taskDhr" },
-            { value: taskDmin, name: "taskDmin" },
-            { value: taskDsec, name: "taskDsec" },
-            { value: taskDes, name: "taskDes" },
-            { value: taskShr, name: "taskShr" },
-            { value: taskSmin, name: "taskSmin" },
-            { value: taskSsec, name: "taskSsec" }
+            { value: task_title, name: "task title" },
+            { value: task_date, name: "task schedule date" },
+            { value: taskDhr, name: "task Duration hour" },
+            { value: taskDmin, name: "task Duration minutes" },
+            { value: taskDsec, name: "task Duration seconds" },
+            { value: taskDes, name: "task Description" },
+            { value: taskShr, name: "task Start time hour" },
+            { value: taskSmin, name: "taskStart time minutes" },
+            { value: taskSsec, name: "task Start time seconds" }
         ];
         
         for (let item of ValidateCheck) {
             if (item.value === "") {
                 
-                return `empty: ${item.name}`;
+                return `Empty Input Field: ${item.name}`;
             }
         }
 
@@ -211,19 +216,23 @@ submitTaskBtn.addEventListener('click', (e)=>{
     
     //submit_post(taskValue, 'add_task', "POST");
     async function makePostRequest() {
-    try {
-        const data = await httpRequest('http://localhost:3000/add_task', 'POST', 
-            taskValue
-        );
-        console.log(JSON.stringify(data, null, 2));
-    } catch (err) {
-        console.log(`Error: ${err.message}`);
-    }
+        try {
+            if( task_title && task_date && taskDhr && taskDmin && taskDsec && taskDes && taskShr && taskSmin && taskSsec !== ''){
+                const data = await httpRequest('http://localhost:3000/add_task', 'POST', 
+                    taskValue
+                );
+                console.log(JSON.stringify(data, null, 2));
+            } else{
+                alert("Fill All Fields To Add Tasks");
+            }
+        } catch (err) {
+            console.log(`Error: ${err.message}`);
+        }
     }
 
     makePostRequest();
     setTimeout(function() {
-        console.log("hello");
+        //console.log("hello");
         httpRequest('http://localhost:3000/get_allTasks', 'GET')
         .then(data => console.log(data))
         .catch(err => console.error(err));
@@ -233,11 +242,11 @@ submitTaskBtn.addEventListener('click', (e)=>{
 
     handleUi();
 
-    alert("Task Addition Success");
+    //alert("Task Addition Success");
     
 });
 
-
+/*
 async function submit_post(taskvalue, route, method){
     let url = `http://localhost:3000/${route}`;
     try {
@@ -256,7 +265,7 @@ async function submit_post(taskvalue, route, method){
     }
     
 }
-
+*/
 /*
  Makes an HTTP request using GET or POST method.
  
@@ -300,11 +309,19 @@ async function httpRequest(url, method = 'GET', body = null) {
     }
 }
 
+//Update Ui data on loading the window
 window.onload = handleUi();
+
+//update Ui data every five seconds
+setInterval(()=>{
+    handleUi
+}, 5000)
+
+
 
 
 export async function handleUi() {
-    alert("button working");
+    //alert("button working");
     try {
         const data = await httpRequest('http://localhost:3000/get_allTasks', 'GET');
         
@@ -315,14 +332,182 @@ export async function handleUi() {
     }
 }
 
+/*#########Handle Active Task Schedule#########*/
+let currentTask;
+let confirmationTimeout;
+
+//show popUp function for confirmtask
+function showpopUp(task){
+    document.getElementById('taskInfo').innerText = `${task.schedule_name}`;
+    document.getElementById('popup_active_task_confirm').style.display = 'flex';
+    
+    currentTask = task;
+
+    //start 30-second confirmation timer
+    confirmationTimeout = setTimeout(()=>{
+        cancelTask(task);
+    }, 30000);
+
+}
+
+//function set up active task Ui
+function ActiveTaskUi(activeTask){
+    let active_task_section = document.querySelector('.taskSec_active');
+    active_task_section.style.display = 'flex';
+    active_task_section.innerHTML = `
+        <div class="taskSec_active_item">
+            <p>${activeTask.schedule_quote}</p>
+            <div class="taskSec_active_item_detail">
+                <h2>${activeTask.schedule_name}</h2>
+                <span>Duration: 1hr 30mins 00sec</span>
+                <span>Started@: ${activeTask.start_time}</span>
+                <span>Date: Thur, 8 May 2025</span>
+            </div>
+        </div>
+        <div class="taskSec_active_timer">
+            <div>
+                <!--duration timer to end-->
+                <p>Ends In:</p>
+                <span id="timerhour"></span>
+                <span id="timermin"></span>
+                <span id="timersec"></span>
+            </div>
+            <div>
+                <!--Add notes-->
+                <button>Note</button>
+                <!--cancel task item-->
+                <button>Cancel</button>
+            </div>
+        </div>
+    `;
+
+    setTimeout(()=>{
+        document.querySelector('.noteSec').style.display = 'none';
+        document.querySelector('.nav_bar').style.display = 'none';
+        document.querySelector('.taskSec').style.display = 'flex';
+    },5000);
+
+
+}
+
+//function timer ui update
+function updateTimerUI(remainingMilliseconds) {
+    let totalSeconds = Math.floor(remainingMilliseconds / 1000);
+    let hours = Math.floor(totalSeconds / 3600);
+    let minutes = Math.floor((totalSeconds % 3600) / 60);
+    let seconds = totalSeconds % 60;
+
+    // Pad single digits with a leading zero for cleaner display
+    document.getElementById('timerhour').innerText = `Hr: ${String(hours).padStart(2, '0')}`;
+    document.getElementById('timermin').innerText = `Min: ${String(minutes).padStart(2, '0')}`;
+    document.getElementById('timersec').innerText = `Sec: ${String(seconds).padStart(2, '0')}`;
+}
+
+
+//confirm task function
+
+
+function confirmTask(){
+    if(currentTask && currentTask.status === 'pending'){
+        currentTask.status ='confirmed';
+        httpRequest(`http://localhost:3000/update_confirmed?id=${currentTask.id}`, 'PUT');
+        handleUi();
+
+        let timeStampInMiliseconds = `${currentTask.schedule_date}T${currentTask.start_time}`;
+        //console.log("timeStamp: ", timeStampInMiliseconds);
+        let startTime = new Date(timeStampInMiliseconds).getTime();
+
+
+        //save endTime as a timestamp in miliseconds
+        let duration =  timeStringMiliseconds(currentTask.duration);
+        console.log(duration);
+        currentTask.endTime = startTime + duration;
+
+        //update active  task ui
+        ActiveTaskUi(currentTask);
+        console.log("confirmed task: ", [currentTask]);
+
+        let storageTask = [currentTask];
+        localStorage.setItem('CurrentTask', JSON.stringify(storageTask));
+
+        clearTimeout(confirmationTimeout);
+        hidePopup();
+
+        //start completion timer
+        const completionInterval = setInterval(()=>{
+            try {
+                const now = Date.now(); //get currentTime in miliseconds
+                let currentTask = JSON.parse(localStorage.getItem('CurrentTask'))[0];
+                //console.log('Ongoing Task: ', currentTask);
+                //console.log("Now Time: ", now); // debug
+                //console.log("Task end time: ", currentTask.endTime);
+                console.log("my current task: ", currentTask);
+                console.log("My Current time: ", now);
+                let remainingTime = currentTask.endTime - now;
+
+                if (remainingTime > 0) {
+                    updateTimerUI(remainingTime);
+                }
+
+                if (now >= currentTask.endTime && currentTask.status === 'confirmed') {
+                    //let taskid = data.find(data => data.id === currentTask.id);
+
+                    //taskid.status = 'completed';
+                    //currentTask.status = 'completed';
+                    currentTask.status = 'completed';
+
+                    httpRequest(`http://localhost:3000/update_completed?id=${currentTask.id}`, 'PUT');
+                    handleUi();
+                    document.querySelector('.taskSec_active').style.display = 'none';
+                    setTimeout(()=>{
+                        document.querySelector('.noteSec').style.display = 'none';
+                        document.querySelector('.taskSec').style.display = 'none';
+                        document.querySelector('.nav_bar').style.display = 'flex';
+                    },5000);
+
+
+                    console.log(`Task ${currentTask.schedule_name} completed.`);
+
+                    clearInterval(completionInterval);                    
+                }
+
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }, 1000);
+    }
+}
+
+document.getElementById('confirmTaskBtn').addEventListener('click', ()=>{
+    confirmTask();
+})
+
+//cancel task function
+function cancelTask(task){
+    if(task.status === 'pending'){
+        //task.status = 'cancelled';
+        httpRequest(`http://localhost:3000/update_cancelled?id=${task.id}`, 'PUT');
+        //handleUi();
+        console.log(`Task ${task.schedule_name} was cancelled.`);
+        hidePopup();
+    }
+}
+
+
+//Hide confirmation popup function
+function hidePopup() {
+    document.getElementById('popup_active_task_confirm').style.display = 'none';
+    currentTask = null;
+    clearTimeout(confirmationTimeout);    
+}
+
 async function ParseUiData(data){
     //console.log(data.length);
 
 
     //Get todays date in the format yyyy-mm-dd
     const today = new Date().toISOString().split('T')[0];
-    
-    
     
     const todayTask = []
 
@@ -354,11 +539,11 @@ async function ParseUiData(data){
         }
     });
 
-    console.log("Task status summary for today:");
+    //console.log("Task status summary for today:");
 
-    console.log(`Pending: ${statusCounts.pending}`);
-    console.log(`Completed: ${statusCounts.completed}`);
-    console.log(`Cancelled: ${statusCounts.cancelled}`);
+    //console.log(`Pending: ${statusCounts.pending}`);
+    //console.log(`Completed: ${statusCounts.completed}`);
+    //console.log(`Cancelled: ${statusCounts.cancelled}`);
 
     //add to the ui pending, completed and cancelled number
     document.querySelector('#tasks_total').innerHTML = `${statusCounts.pending}`;
@@ -379,11 +564,11 @@ async function ParseUiData(data){
 
         //do a check to see if pending task length if not equal to Zero:0
         if(pendingTasks.length > 0){
-            alert("Pending Task Length", pendingTasks.length);
+            //alert("Pending Task Length", pendingTasks.length);
             pendingTasks.forEach((task, index) => {
                 // Create view item (compact list view)
                 const viewItem = `
-                    <div class="view_item" data-id="${task.id}">
+                    <div class="view_item" data-id="${task.id}" style="animation-delay: ${index * 0.5}s;">
                         <p>${task.schedule_name}</p>
                         <div class="view_item_detail">
                             <span>Starts@: ${task.start_time}</span>
@@ -556,16 +741,16 @@ async function ParseUiData(data){
 
     //button to show pending, cancelled and completed
     document.querySelector('#pendingBtn').addEventListener('click',function(e){
-        console.log('pending tasks');
+        //console.log('pending tasks');
         let pendingTasks = todayTask.filter( task => task.status === 'pending');
 
-        if(pendingTasks){
-            alert(pendingTasks.length);
+        if(pendingTasks.length > 0){
+            //alert(pendingTasks.length);
             document.querySelector('.view_content').innerHTML = '';
-            pendingTasks.forEach(pendingtask => {
+            pendingTasks.forEach((pendingtask, index)=> {
 
                 let pendingItem = `
-                    <div class="view_item" data-id="${pendingtask.id}">
+                    <div class="view_item" data-id="${pendingtask.id}" style="animation-delay: ${index * 0.5}s;">
                         <p>${pendingtask.schedule_name}</p>
                         <div class="view_item_detail">
                             <span>Starts@: ${pendingtask.start_time}</span>
@@ -577,18 +762,18 @@ async function ParseUiData(data){
                 document.querySelector('.view_content').innerHTML += pendingItem;
                 
             });
-        }
+        } 
     });
 
     document.querySelector('#achievedBtn').addEventListener('click',function(e){
-        console.log('achieved task');
+        //console.log('achieved task');
         let achievedTasks = todayTask.filter( task => task.status === 'completed');
         if(achievedTasks.length > 0){
             document.querySelector('.view_content').innerHTML = '';
-            achievedTasks.forEach(achievedtask => {
+            achievedTasks.forEach((achievedtask, index )=> {
 
                 let achievedItem = `
-                    <div class="view_item" data-id="${achievedtask.id}">
+                    <div class="view_item" data-id="${achievedtask.id}" style="animation-delay: ${index * 0.5}s;">
                         <p>${achievedtask.schedule_name}</p>
                         <div class="view_item_detail">
                             <span>Starts@: ${achievedtask.start_time}</span>
@@ -602,21 +787,21 @@ async function ParseUiData(data){
             });
         };
 
-        alert('No Tasks Archieved');
+        //alert('No Tasks Archieved');
         
     });
 
     document.querySelector('#cancelledBtn').addEventListener('click',function(e){
-        console.log('cancelled');
+        //console.log('cancelled');
         let cancelledTasks = todayTask.filter( task => task.status === 'cancelled');
 
         if(cancelledTasks.length > 0){
             document.querySelector('.view_content').innerHTML = '';
         
-            cancelledTasks.forEach( cancelledtask => {
+            cancelledTasks.forEach( (cancelledtask, index )=> {
 
                 let cancelledItem = `
-                    <div class="view_item" data-id="${cancelledtask.id}">
+                    <div class="view_item" data-id="${cancelledtask.id}" style="animation-delay: ${index * 0.5}s;">
                         <p>${cancelledtask.schedule_name}</p>
                         <p>Cancelled</p>
                         <div class="view_item_detail">
@@ -631,19 +816,24 @@ async function ParseUiData(data){
             });
         };
 
-        alert('NO Cancelled Tasks')
+        //alert('NO Cancelled Tasks');
     });
 
+    //Main loop to check for task start time
+    setInterval(()=>{
+        const now = new Date().getTime();
 
+        //console.log("now timestamp: ", now);
+        //console.log(todayTask);
+        
+        todayTask.forEach(task => {
+            let timeStampInMiliseconds = `${task.schedule_date}T${task.start_time}`;
+            //console.log("timeStamp: ", timeStampInMiliseconds);
+            let startTime = new Date(timeStampInMiliseconds).getTime();
+            //console.log("final milisecond: ", startTime);
+            if(task.status === 'pending' && now >= (startTime)){
+                showpopUp(task);
+            }
+        })
+    }, 1000);
 }
-
-
-//Delete Item function
-function delete_item(id){
-    
-}
-
-//exports[handleUi]
-
-
-

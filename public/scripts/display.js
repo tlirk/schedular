@@ -4,7 +4,7 @@ let homeBtn = document.querySelectorAll('#homeBtn');
 let taskBtn = document.querySelectorAll('#taskBtn');
 let notesBtn = document.querySelectorAll('#noteBtn');
 
-//initializing other section buttons
+//initializing other section 
 
 let homeSec = document.querySelector('.nav_bar');
 let taskSec = document.querySelector('.taskSec');
@@ -94,7 +94,6 @@ function msg_show(status, msg, type){
 let msgCloseBtn = document.querySelector('.msg_close-btn');
 
 msgCloseBtn.addEventListener('click', ()=>{
-    //alert('hello');
     msgPopUp.style.display = 'none';
 })
 
@@ -103,7 +102,7 @@ window.addEventListener('click', function(event) {
     if (event.target === msgPopUp) {
         msgPopUp.style.display = 'none';
     }
-    });
+});
 
 
 //msg_show('success!','message sent','success');

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn | with slider preview</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!--Linking swiperJs Css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+</head>
+<body>
+
+    <main>
+       
+        <!-- Main swiper container with Swiper's required class -->
+        <div class="swiper left_side">
+            <!-- Swiper wrapper required by Swiper.js -->
+            <div class="swiper-wrapper card-wrapper">
+                <div class="swiper-slide card-item">
+                    <img src="images/designer_ui_ux.jpg" class="card-image" />
+                    <span>
+                        <p class="badge designer"> Designer</p>
+                        <h2 class="card-title"> Lorem ipsum dolor sit explicable</h2>                        
+                    </span>
+
+                    <div class="card-item-details">
+                        Bringing all your note's, timetables & Class Lectures and contact's right in your inbox
+                        Instagram, whatsApp and Telegram  <br>
+                        Let's get started <br>
+                        <button class="showSignUpBtn">Sign Up</button> Already have an account? <a href="#" class="showLoginBtn">Log-In</a>
+
+                    </div>
+                </div>
+
+                <div class="swiper-slide card-item">
+                    <img src="images/devworkstation.jpg" class="card-image" />
+                    <span>
+                        <p class="badge developer"> Developer</p>
+                        <h2 class="card-title"> Lorem ipsum dolor sit explicable</h2>
+                    </span>
+
+                    <div class="card-item-details">
+                        Bringing all your note's, timetables & Class Lectures and contact's right in your inbox
+                        Instagram, whatsApp and Telegram  <br>
+                        Let's get started <br>
+                        <button class="showSignUpBtn">Sign Up</button> Already have an account? <a href="#" class="showLoginBtn">Log-In</a>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card-item">
+                    <img src="images/marketer.jpg" alt="card-image" class="card-image">
+                    <span>
+                        <p class="badge marketer"> Marketer</p>
+                        <h2 class="card-title"> Lorem ipsum dolor sit explicable</h2> 
+                    </span> 
+
+                    <div class="card-item-details">
+                        Bringing all your note's, timetables & Class Lectures and contact's right in your inbox
+                        Instagram, whatsApp and Telegram  <br>
+                        Let's get started <br>
+                        <button class="showSignUpBtn">Sign Up</button> Already have an account? <a href="#" class="showLoginBtn">Log-In</a>
+
+                    </div>
+                </div>
+
+                <div class="swiper-slide card-item">
+                    <img src="images/gamer.jpg" alt="card-image" class="card-image">
+                    <span>
+                        <p class="badge gamer"> Gamer</p>
+                        <h2 class="card-title"> Lorem ipsum dolor sit explicable</h2>
+                    </span>
+
+                    <div class="card-item-details">
+                        Bringing all your note's, timetables & Class Lectures and contact's right in your inbox
+                        Instagram, whatsApp and Telegram  <br>
+                        Let's get started <br>
+                        <button class="showSignUpBtn">Sign Up</button> Already have an account? <a href="#" class="showLoginBtn">Log-In</a>
+
+                    </div>
+                </div>
+
+                <div class="swiper-slide card-item">
+                    <img src="images/editor.jpg" alt="card-image" class="card-image">
+                    <span>
+                        <p class="badge editor"> Editor</p>
+                        <h2 class="card-title"> Lorem ipsum dolor sit explicable</h2>
+                    </span>
+
+                    <div class="card-item-details">
+                        Bringing all your note's, timetables & Class Lectures and contact's right in your inbox
+                        Instagram, whatsApp and Telegram  <br>
+                        Let's get started <br>
+                        <button class="showSignUpBtn">Sign Up</button> Already have an account? <a href="#" class="showLoginBtn">Log-In</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- pagination bullets -->
+            <div class="swiper-pagination"></div>
+
+            <!-- navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            
+        </div>
+        <!--right side node-->
+        <div class="right_side">
+            <!--Login Node-->
+            <div class="login">
+                <div class="login_nav">
+                    <h2>tSchedular</h2>
+                     <p>Welcome to tSchedular</p>
+                </div>
+                <form action="">
+                    <!--username or email inputs-->
+                    <div>
+                        <label for="">Users name or Email</label><br>
+                        <input type="text">
+                    </div>
+                    <!--password input-->
+                    <div>
+                        <label for="">Password</label><br>
+                        <input type="password">
+                    </div>
+                    <!--forgot password node-->
+                    <div id="passReset"><a href="#" id="resetPassRedirect">Forgot password?</a></div>
+
+                    <!--Sign button-->
+                    <div id="sign_button">
+                        <button type="submit">Sign in</button>
+                    </div>
+
+                    <!--sign with google-->
+                    <div id="or">
+                        <hr>
+                        <p>or</p>
+                    </div>
+
+                    <div class="login_google">
+
+                    </div>
+
+                    <div id="create_account">
+                        <p>New here? Let's Get Started <a href="#" id="create_accountRedirect">Create Account</a></p>
+                    </div>
+                </form>
+            </div>
+            <!--Register Node-->
+            <div class="register">
+                <div class="welcome">
+                    <p>
+                        Ready to simplify your student Life?
+                        lets get Started
+                    </p>                    
+                </div>
+                <div class="register_inputs">
+
+                    <div>
+                        <label for="">First Name:</label><br>
+                        <input type="text" placeholder="enter first name" required id="rf_name">
+                    </div>
+
+                    <div>
+                        <label for="">Last Name:</label><br>
+                        <input type="text" placeholder="enter last name" required id="rl_name">
+                    </div>
+
+                    <div>
+                        <label for="">Email:</label><br>
+                        <input type="email" placeholder="e.g exampleEmail@gmail.com" required  id="r_email">
+                    </div>
+
+                    <div>
+                        <label for="">Phone Number:</label><br>
+                        <input type="number" placeholder="07XXXXXXXX or 01XXXXXXXX" required id="r_phoneNo">
+                    </div>
+
+                    <div>
+                        <label for="">Password:</label><br>
+                        <input type="password" placeholder="enter password" required id="r_password">
+                    </div>
+
+                    <div>
+                        <label for="">Confirm Password:</label><br>
+                        <input type="password" placeholder="confirm password" required id="rc_password">
+                    </div>
+                    
+                    <div>
+                        <button id="signupBtn">Sign Up</button>
+                    </div>
+                    <div>
+                        Already Have an Account?<br>
+                         Welcome Again! <a href="#" id="loginRedirect">Log-In</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--message notification-->
+    <div class="msgPopUp">
+        <div class="msgPopUp-content">
+            <span class="msg_close-btn" onclick="hidePopup()">&times;</span>
+            <div class="msg">
+                <div class="msg_status">
+                    <!--success, alert, reminder-->
+                    Success!
+                </div>
+                <div class="msg_notify">
+                    message sent successfully
+                </div>
+            </div>
+            <div class="msg_timer"></div>
+        </div>
+    </div>
+    
+    <!--Linking SwiperJs script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        //initialize buttons 
+        let createAccountRedirectBtn = document.querySelector('#create_accountRedirect');
+        let logInRedirectBtn = document.querySelector('#loginRedirect');
+        let showSignUpBtn = document.querySelectorAll('.showSignUpBtn');
+        let showLoginBtn = document.querySelectorAll('.showLoginBtn');
+
+        //initializing sections
+        let registerRedirect = document.querySelector('.register');
+        let loginRedirect = document.querySelector('.login');
+        
+
+        //show register section
+        createAccountRedirectBtn.addEventListener('click',()=>{
+            //alert('redirect to register'); //debug
+            loginRedirect.style.display= 'none';
+            registerRedirect.style.display = 'flex';
+        })
+
+        //show login section 
+        logInRedirectBtn.addEventListener('click', ()=>{
+            //alert('Redirect to Login'); //debug
+            registerRedirect.style.display = 'none';
+            loginRedirect.style.display = 'flex';
+        })
+
+        showLoginBtn.forEach(btn=>{
+            btn.addEventListener('click',()=>{
+                document.querySelector('.left_side').style.display = "none";
+                //alert("login")
+                document.querySelector('.right_side').style.width = '100%';
+                document.querySelector('.right_side').style.display = 'flex';
+                document.querySelector('.register').style.display = 'none';
+                document.querySelector('.login').style.display = 'flex';
+                resetDisplay();
+
+            })
+        })
+
+        showSignUpBtn.forEach(btn=>{
+            btn.addEventListener('click',()=>{
+                document.querySelector('.left_side').style.display = "none";
+                //alert("register")
+                document.querySelector('.right_side').style.width = '100%';
+                document.querySelector('.right_side').style.display = 'flex';
+                document.querySelector('.login').style.display = 'none';
+                document.querySelector('.register').style.display = 'flex';
+                resetDisplay();
+                                
+            })
+        })
+
+        function resetDisplay(){
+            setInterval(() => {
+            const width = window.innerWidth;
+            if (!width) {
+                console.warn("Error in getting Screen width");
+
+            }
+
+            if(width > 1350){
+                document.querySelector('.left_side').style.display = "flex";
+                //alert("register")
+                document.querySelector('.right_side').style.width = '50%';
+                document.querySelector('.right_side').style.display = 'flex';
+            }
+
+            //console.log(`Script width: ${width}px`);//debug
+        }, 1000);
+
+        }
+
+    </script>
+    <!--Linking Custom Script-->
+    <script src="script.js"></script>
+    <script src="auth_setup.js" defer></script>
+</body>
+</html>

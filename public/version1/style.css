@@ -1,0 +1,503 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+main{
+    display: flex;
+    flex-direction: row;
+    min-height: 120vh;
+    position: relative;
+}
+/*======================================Left Side Node style==========================================*/
+
+.swiper.left_side {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+}
+
+/* card-wrapper becomes swiper-wrapper */
+.swiper-wrapper {
+    height: 100%;
+}
+
+/* each slide (was .card-item) */
+.swiper-slide.card-item {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* image still fills card */
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style the overlay span */
+.card-item span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+.card-item .card-item-details{
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 28%;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.card-item .card-item-details button{
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
+    border: 3px solid #091833;
+    background-color: #ACC8FF;
+}
+
+.card-item .card-item-details button:hover{
+    border: 3px solid #091833;
+    background-color: aqua;
+    transform: scale(110%);
+}
+
+
+/* Initial hidden state */
+.card-item p,
+.card-item h2{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Animate when slide is active */
+.swiper-slide-active p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+    font-size: 2rem;
+}
+
+.swiper-slide-active h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+    font-size: 1.8rem;
+}
+
+
+/* SHOW ANIMATION ON SWIPER SLIDE ACTIVE */
+.swiper-slide-active span {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+/*Styling swiper pagination*/
+.swiper-pagination {
+    position: absolute;
+    bottom: 100px !important; /* move bullets 100px up from the bottom */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Pagination bullets */
+.swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    background-color: #f053b9;
+    opacity: 0.5;
+    margin: 0 6px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Active bullet style */
+.swiper-pagination-bullet-active {
+    width: 30px;
+    height: 18px;
+    opacity: 1;
+    background-color: #f528fc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+}
+
+.swiper-pagination-bullet:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+
+
+
+/*styling slider buttons prev, next*/
+.card-wrapper .swiper-slide-button{
+    color: #5372F0;
+    margin-top: -35px;
+}
+
+@media screen  and (max-width: 768px){
+    .card-wrapper{
+        margin: 0 10px 25px;
+    }
+
+    .card-wrapper .swiper-slide-button{
+        display: none;
+    }
+    
+}
+
+
+/*============================Right Side Node Style=============================*/
+.right_side{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background: #006A6D;
+    position: absolute;
+    right: 0;
+    height: 120vh;
+}
+
+/*Log In Node*/
+.right_side .login{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 120vh;
+    background: #ACC8FF;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_side .login_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.right_side .login_nav h2{
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: aqua;
+    margin-bottom: 50px;
+}
+
+.right_side .login_nav p{
+    color: rgb(16, 8, 61);
+    font-size: 1.8rem;
+}
+
+.login form{
+    padding: 20px 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    right: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login form div{
+    margin: 50px 0px 10px 0px;
+    width: 100%;
+}
+
+.login form div label{
+    font-size: 1.5rem;
+    color: rgba(10, 35, 80, 0.736);
+}
+
+.login form div input{
+    outline: none;
+    border: 2px solid transparent;
+    width: 400px;
+    height: 25px;
+    display: flex;
+    flex: 1 1 0;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: transparent;
+    border-bottom: 2px solid rgba(10, 35, 80, 0.907);
+}
+
+.login form #passReset{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.login form #sign_button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0px 10px 0px;
+}
+
+.login form #sign_button button{
+    width: 50%;
+    height: 50px;
+    border-radius: 30px;
+    outline: none;
+    background: rgba(10, 35, 80, 0.907);
+    border: 2px solid transparent;
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.login form #sign_button button:hover{
+    background-color: aqua;
+    color: rgba(10, 35, 80, 0.907);
+    cursor: pointer;
+}
+
+.login form #or{
+    display: flex;
+    flex-direction: column;
+    margin:30px 0px 30px 0px;
+}
+
+.login form #or p{
+    position: relative;
+    background: #fff;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    top: -16px;
+    left: 46%;
+}
+
+.login form #create_account{
+    position: relative;
+    
+    font-size: 1.4rem;
+}
+
+/*Sign In Node*/
+
+.register {
+  position: relative;
+  min-height: 100vh;
+  display: none;/*default none changed to flex*/
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Welcome animation */
+.welcome {
+  position: absolute;
+  top: 50%;
+  animation: fadeInOut 4s ease-in-out forwards;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; visibility: visible; transform: translateY(20px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; transform: translateY(-20px); }
+}
+
+/* Register container: initial hidden state */
+.register_inputs {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Animation for individual form divs */
+.register_inputs > div {
+  margin: 10px 0px 10px 0px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.8s ease-out forwards;
+}
+
+.register_inputs > div:hover label{
+    color: #091833;
+}
+
+.register_inputs > div:hover input{
+    background: #fff;
+    border: 2px solid #091833;
+}
+
+.register_inputs > div:hover button{
+    background: #fff;
+    border: 4px solid #091833;
+    color: #091833;
+    font-size: 1.4rem;
+}
+
+.register_inputs  > div:nth-child(8){
+    font-size: 1.4rem;
+}
+/* Staggered animation delays using nth-child */
+.register_inputs > div:nth-child(1) { animation-delay: 4.2s; }
+.register_inputs > div:nth-child(2) { animation-delay: 4.5s; }
+.register_inputs > div:nth-child(3) { animation-delay: 4.8s; }
+.register_inputs > div:nth-child(4) { animation-delay: 5.1s; }
+.register_inputs > div:nth-child(5) { animation-delay: 5.4s; }
+.register_inputs > div:nth-child(6) { animation-delay: 5.7s; }
+.register_inputs > div:nth-child(7) { animation-delay: 6s; }
+.register_inputs > div:nth-child(8) { animation-delay: 6.3s; }
+
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register_inputs > div label{
+    color: aqua;
+    margin: 5px 0px 10px 0px; 
+    font-size: 2rem;
+}
+
+
+.register_inputs > div input{
+    padding: 8px;
+    font-size: 1rem;
+    height: 50px;
+    font-size: 1.4rem;
+    width: 400px;
+    display: flex;
+    flex: 1 1 0;
+    outline: none;
+    border: 2px solid transparent;
+    background: transparent;
+    border-bottom: 4px solid #091833;
+
+}
+
+.register_inputs > div button{
+    width: 200px;
+    outline: none;
+    background: #091833;
+    color: #fff;
+    border: 2px solid transparent;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/*message notification pop-up*/
+.msgPopUp{
+    position: absolute;
+    min-width: 200px;
+    min-height: 150px;
+    z-index: 10;
+    margin-left: 20px;
+    top: 100px;
+    background: #fff;
+    padding: 10px 10px;
+    border: 4px solid aqua;
+    border-radius: 10px;
+    transform: translateX(-1000px);
+    transition: transform 1s ease;
+}
+
+.msgPopUp.show{
+    transform: translateX(20px);
+
+}
+
+.msgPopUp .msg_close-btn{
+    cursor: pointer;
+    color: aqua;
+    font-size: 22px;
+    border: none;
+    background: none;
+    
+}
+
+@keyframes slideToRight {
+    0%{
+        transform: translateX(2px);
+    }
+
+
+    100%{
+        transform: translateX(-1000px);
+    }
+    
+}
+
+
+/*=========================Device Screen Responsiveness=================*/
+@media screen  and (max-width: 1350px) {
+    .right_side{
+        display: none;
+    }
+
+    .swiper.left_side{
+        width: 100%;
+    }
+
+    .swiper.left_side .card-item div{
+        display: block;
+    }
+    
+}
+
