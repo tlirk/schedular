@@ -177,7 +177,7 @@ signUpBtn.addEventListener('click', async (e) => {
             rconfirmPassword: rconfirmPassword
         };
 
-        const url = 'http://localhost:3000/signup';
+        const url = 'https://tlirk-schedular.onrender.com/signup';
 
         const response = await fetch(url, {
             method: 'POST',
